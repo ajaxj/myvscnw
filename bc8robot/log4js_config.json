@@ -1,0 +1,20 @@
+{
+  "appenders": [
+    {
+      "type": "file",
+      "filename": "dev.log",
+      "maxLogSize": 2048000,
+      "backups": 3,
+      "category": "dev"
+    },
+    {
+      "type": "file",
+      "absolute": true,
+      "filename": "product.log",
+      "maxLogSize": 2048000,
+      "backups": 10,
+      "category": "product"          
+    }
+  ],
+  "levels":{ "dev": "DEBUG"} 
+}

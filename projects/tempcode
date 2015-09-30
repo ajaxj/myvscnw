@@ -1,0 +1,183 @@
+var mongoose = require('mongoose');
+			mongoose.connect('mongodb://test:test@localhost/bc8');
+			var db = mongoose.connection;
+			db.on('error', console.error.bind(console, 'connection error:'));
+			db.once('open', function() {
+			console.log('mongoose opened!');
+			var caixiSchema = new mongoose.Schema({
+					name:{type: String}, 
+					en:{type: String}
+					}, 
+					{collection: "bc8_caixi"}
+				);
+				var CaixiModel = mongoose.model('Caixi',caixiSchema);
+			
+				// CaixiModel.find({},null,null,function(err,docs){
+				// 	if(err){
+				// 		console.log(err);
+				// 	}else{
+				// 		console.log(docs);
+				// 	}
+				// });
+				var c = new CaixiModel();
+				c.name = "name2";
+				c.en = "en2";
+				c.save(function(err,doc){
+					if(err)console.log(err);
+					else console.log(doc);
+				});
+			});
+			
+			
+			
+*********** use ejs jade template **************
+global.$ = $;
+
+var jade = require("jade");
+var ejs = require("ejs");
+
+$(document).ready(function(){
+	
+	var jade_str = "h1 hello #{name}";
+	var jade_view = jade.compile(jade_str);
+	
+	var ejs_str = "<h1>hello <%=name%></h1>";
+	var ejs_view = ejs.compile(ejs_str)
+	
+	$("#jade").html(jade_view({name:'jade'}));
+	$("#ejs").html(ejs_view({name:'ejs'}));
+	
+	
+});
+
+****************** progress-bar
+<div class="row">
+		<button type="button" onClick="run()">进度</button>
+			<div class="progress">
+			  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+				60%
+			  </div>
+			</div>
+		</div>
+
+
+var p = 0;
+function run(){
+            p+=5;
+            $("div[class=progress-bar]").css("width",p+"%");
+            if(p<100){
+                var timer=setTimeout("run()",500);
+            }else{
+                alert("加载完毕！");
+            }
+ }
+ 
+ ****************** progress-bar 2
+ 
+ 
+function processerbar(time){
+     document.getElementById('probar').style.display="block";
+	$("#line").each(function(i,item){
+		var a=parseInt($(item).attr("w"));
+		$(item).animate({
+			width: a+"%"
+		},time);
+	});
+   var si = window.setInterval(
+	function(){
+		a=$("#line").width();
+		b=(a/200*100).toFixed(0);
+		document.getElementById('percent').innerHTML=b+"%";
+		document.getElementById('percent').style.left=a-12+"px";
+		document.getElementById('msg').innerHTML="上传中";
+		if(document.getElementById('percent').innerHTML=="100%") {
+		clearInterval(si);
+		document.getElementById('msg').innerHTML="&nbsp;&nbsp;成功";
+		}
+	},70);
+};		
+		
+		
+		
+<div class="row">
+			<button type="button" onClick="processerbar(3000)">上传</button>
+			<!-- 进度条 -->
+				<div class="barline" id="probar">
+					<div id="percent"></div>
+					<div id="line" w="100" style="width:0px;"></div>	
+					<div id="msg" style=""></div>			
+				</div>
+
+		</div>
+				
+		
+		
+.barline{
+float:left;
+width:200px;
+background:#FFF;
+border:2px solid #4DBF7D;
+height:12px;
+
+display:inline-block;
+border-radius:8px;
+display:none;
+position:absolute;left:100px;top:100px;
+}
+.barline #percent{position:absolute;left:0px;top:-30px;display:inline-block;color:#4DBF7D;font-size:16px;}
+.barline #line{float:left;height:12px;overflow:hidden;background:#4DBF7D;border-radius:8px;}
+.barline #msg{position:absolute;left:80px;top:30px;display:inline-block;color:#4DBF7D;font-size:14px;}
+
+/**************** old   delete ***************
+global.$ = $;
+var log4js = require("log4js");
+log4js.configure('log4js_config.json', {});
+var logger = log4js.getLogger('dev');
+
+// var folder_view = require('folder_view');
+
+var nwGui = require("nw.gui");
+
+// require('nw.gui').Window.get().showDevTools();
+
+var initMenu = function(){
+	try {
+		var nativeMenuBar = new nwGui.Menu({type:'menubar'});
+		if (process.platform == "darwin") {
+      		nativeMenuBar.createMacBuiltin && nativeMenuBar.createMacBuiltin("FileExplorer");
+    	}
+    	nwGui.Window.get().menu = nativeMenuBar;
+	} catch (error) {
+		log4js.error(error);
+	}	
+};
+
+var App = {
+	// about:function(){
+	// 	 var params = {toolbar: false, resizable: false, show: true, height: 120, width: 350};
+	// 	var aboutWindow = nwGui.Window.open('about.html', params);
+	// 	aboutWindow.on('document-end', function() {
+	// 	aboutWindow.focus();
+	// 	// open link in default browser
+	// 		$(aboutWindow.window.document).find('a').bind('click', function (e) {
+	// 			e.preventDefault();
+	// 			nwGui.Shell.openExternal(this.href);
+	// 		});
+	// 	});
+	// },
+	test1:function(){
+		logger.debug("about");
+		logger.error("about error");
+		alert("app.about");
+	},
+	test2:function(){
+		logger.error("test error");
+		alert("app.test");
+	}
+};
+
+$(document).ready(function(){
+	initMenu();
+	
+	
+});

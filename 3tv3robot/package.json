@@ -1,0 +1,11 @@
+{
+	"name":"3tv3robot",
+	"description":"3tv3.com Robot",
+	"version":"0.1",
+	"main":"index.html",
+	"window":{
+		"toolbar":true,
+		"width":700,
+		"height":500
+	}
+}

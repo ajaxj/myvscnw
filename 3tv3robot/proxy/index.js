@@ -1,0 +1,1 @@
+exports.CategoryProxy = require("./category");
