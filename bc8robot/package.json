@@ -1,14 +1,11 @@
 {
-	"name": "FileExplorer",
-	"description": "Simple file explorer.",
+	"name": "bc8robot",
+	"description": "my bc8 robot demo",
 	"version": "0.1",
 	"main": "index.html",
 	"window": {
 		"toolbar": true,
-		"width": 660,
+		"width": 700,
 		"height": 500
 	}
-	// "dependencies": {
-   	// 	 "mongoose": "*"
-  	// }
 }

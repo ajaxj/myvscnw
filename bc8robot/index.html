@@ -2,70 +2,63 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<title>App</title>
+<title>bc8 robot</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script src="css/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="main.js"></script>
-
+<style>
+	.row1 {
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+</style>
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="row">
-			<button type="button" onClick="showLoad('tipInfo')">Loading</button>
-		</div>
-		<div class="row">
-			<button class="btn btn-default" id="btn1" type="button">Button</button>
-			<button class="btn btn-default" id="btn2" type="button">Button</button>
-			<button class="btn btn-default" id="btn3" type="button">crawl</button>
-			
-		</div>
-		<div class="row">
-			<table id="table1" class="table table-striped table-bordered">
-				
-			</table>
-		</div>
-		<div class="row">
+		<div class="row1">
 			 <!-- Nav tabs -->
-			<ul id="myTabs" class="nav nav-tabs" role="tablist">
+			<ul id="mytabs" class="nav nav-tabs" role="tablist">
 				<li role="presentation" class="active"><a href="#home" id="tab_home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-				<li role="presentation"><a href="#addcaixi" id="tab_addcaixi" aria-controls="addcaixi" role="tab" data-toggle="tab">Add Caixi</a></li>
-				<li role="presentation"><a href="#cook" id="tab_cook" aria-controls="cook" role="tab" data-toggle="tab">Cook List</a></li>
-				<li role="presentation"><a href="#settings" id="tab_settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+				<li role="presentation"><a href="#caixi" id="tab_caixi" aria-controls="caixi" role="tab" data-toggle="tab">菜系</a></li>
+				<li role="presentation"><a href="#cook" id="tab_cook" aria-controls="cook" role="tab" data-toggle="tab">菜单</a></li>
 			</ul>
-			
 			<!-- Tab panes -->
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane fade active" id="home">home</div>
-				<div role="tabpanel" class="tab-pane fade" id="addcaixi">
-				<div class="col-md-4">
-		
-						<div class="form-group">
-							<label for="name">Name</label>
-							<input type="text" class="form-control" id="name" name="name" placeholder="Name">
-						</div>
-						<div class="form-group">
-							<label for="en">En</label>
-							<input type="text" class="form-control" id="en" name="en" placeholder="En">
-						</div>
-						<button id="btn_addcaixi" class="btn btn-default">Add</button>
-
-				</div>	
-				
-				</div>
-				<div role="tabpanel" class="tab-pane fade" id="cook">
-					<select class="form-control" id="caixi_select">
-					</select>
-					<table id="table_cook" class="table table-striped table-bordered">
-					</table>
+				<div role="tabpanel" class="tab-pane fade" id="caixi">
+										
+						<button class="btn btn-default" id="btn_add_caixi" type="button">添加</button>
+					
+						<table class="table table-striped table-bordered">
+							<thead>
+							<tr>
+								<th>分类</th><th>En</th><th>操作</th>
+							<tr>
+							</thead>
+							<tbody id="table_caixi">
+							</tbody>
+						</table>
 					
 				</div>
-				<div role="tabpanel" class="tab-pane fade" id="settings">settings</div>
+				<div role="tabpanel" class="tab-pane fade" id="cook">
+										
+						<button class="btn btn-default" id="btn_add_caixi" type="button">添加</button>
+						
+						<table class="table table-striped table-bordered">
+							<thead>
+							<tr>
+								<th>title</th><th>level</th><th>操作</th>
+							<tr>
+							</thead>
+							<tbody id="table_cook">
+							</tbody>
+						</table>
+					
+				</div>
 			</div>
 		</div>
 	</div>
-	
-	
 </body>
 </html>

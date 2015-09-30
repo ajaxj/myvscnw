@@ -27,6 +27,7 @@ var App = {
 		categoryAddWindow.on('document-end', function() {
 			categoryAddWindow.focus()
 			$(categoryAddWindow.window.document).find('#btn_category_add_close').bind('click', function(e){
+				
 					categoryAddWindow.close();
 			});
 			
